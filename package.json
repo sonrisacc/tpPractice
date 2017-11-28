@@ -1,0 +1,29 @@
+{
+  "name": "tppractice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "numeralTranslator.js",
+  "scripts": {
+    "test": "mocha **/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonrisacc/tpPractice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sonrisacc/tpPractice/issues"
+  },
+  "homepage": "https://github.com/sonrisacc/tpPractice#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.12.0",
+    "eslint-config-google": "^0.9.1",
+    "eslint-config-prettier": "^2.9.0",
+    "prettier": "^1.8.2"
+  }
+}

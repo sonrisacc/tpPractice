@@ -1,0 +1,6 @@
+{
+  "extends": ["google", "prettier"],
+  "env": {
+    "es6": true
+  }
+}
