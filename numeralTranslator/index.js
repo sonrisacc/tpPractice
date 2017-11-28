@@ -25,7 +25,7 @@ const translateRomanNumeral = function(romanNumeral) {
     let cur = DIGIT_VALUES[romanNumeral.toUpperCase()[i]];
     let next = DIGIT_VALUES[romanNumeral.toUpperCase()[i + 1]];
 
-    if (cur >= next || i === romanNumeral.length - 1) {
+    if (cur >= next || !next) {
       result += cur;
     } else {
       result -= cur;
