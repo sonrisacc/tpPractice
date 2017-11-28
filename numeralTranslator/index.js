@@ -13,26 +13,25 @@ const DIGIT_VALUES = {
 // MDCCCCX  1000 500 100 100 100 100 10  1910
 
 const translateRomanNumeral = function(romanNumeral) {
-  // TODO: Implement me!
   // rule out invalid input
   if (typeof romanNumeral !== 'string' || romanNumeral.length === 0) {
     return null;
   }
-  // rule out invalid letters
   let result = 0;
   for (let i = 0; i < romanNumeral.length; i++) {
+    // rule out invalid letters
     if (!DIGIT_VALUES[romanNumeral.toUpperCase()[i]]) return null;
+
     let cur = DIGIT_VALUES[romanNumeral.toUpperCase()[i]];
     let next = DIGIT_VALUES[romanNumeral.toUpperCase()[i + 1]];
-    console.log(result);
+
     if (cur >= next || i === romanNumeral.length - 1) {
       result += cur;
-      console.log(result);
     } else {
       result -= cur;
     }
   }
-  return Math.abs(result);
+  return result;
 };
 
 // console.log(translateRomanNumeral('MCMLIV'));
