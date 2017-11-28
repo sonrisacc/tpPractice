@@ -7,6 +7,10 @@ const DIGIT_VALUES = {
   D: 500,
   M: 1000
 };
+// MCMLIV  1000  100  1000 50 1 5
+// MMVIII  1000 1000 5 1 1 1
+// MCM  1000 100 1000
+// MDCCCCX  1000 500 100 100 100 100 10  1910
 
 const translateRomanNumeral = function(romanNumeral) {
   // TODO: Implement me!
@@ -15,20 +19,21 @@ const translateRomanNumeral = function(romanNumeral) {
     return null;
   }
   // rule out invalid letters
-  let result;
-  for (let i = 1; i < romanNumeral.length; i++) {
+  let result = 0;
+  for (let i = 0; i < romanNumeral.length; i++) {
     if (!DIGIT_VALUES[romanNumeral.toUpperCase()[i]]) return null;
     let cur = DIGIT_VALUES[romanNumeral.toUpperCase()[i]];
-    let pre = DIGIT_VALUES[romanNumeral.toUpperCase()[i - 1]];
-    result = result || DIGIT_VALUES[romanNumeral.toUpperCase()[0]];
-
-    if (cur >= pre) {
-      result -= cur;
-    } else {
+    let next = DIGIT_VALUES[romanNumeral.toUpperCase()[i + 1]];
+    console.log(result);
+    if (cur >= next || i === romanNumeral.length - 1) {
       result += cur;
+      console.log(result);
+    } else {
+      result -= cur;
     }
-    return Math.abs(result);
   }
+  return Math.abs(result);
 };
 
+// console.log(translateRomanNumeral('MCMLIV'));
 module.exports = translateRomanNumeral;
