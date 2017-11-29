@@ -24,14 +24,6 @@ Stack.prototype.size = function() {
   return this.totalIndex;
 };
 
-// const newStack = new Stack();
-// newStack.push(3);
-// console.log('30', newStack.storage);
-// newStack.push(4);
-// console.log('32', newStack.storage);
-// console.log(newStack.pop());
-// console.log('34', newStack.storage);
-
 /**
  * Queue Class
  */
@@ -68,14 +60,6 @@ Queue.prototype.size = function() {
 };
 
 module.exports = Queue;
-// const newQueue = new Queue();
-// newQueue.enqueue('1');
-// newQueue.enqueue('2');
-// newQueue.enqueue('3');
-// console.log(newQueue.size);
-// console.log(newQueue.dequeue());
-// console.log(newQueue.size);
-// console.log(newQueue.dequeue());
 
 /*
 const arr = [1, 2, 3];
