@@ -16,7 +16,7 @@ describe('Check maxProfit', () => {
   it('should be maxProfit when there are same prices', () => {
     maxProfit([1, 6, 6, 6, 6, 2]).should.be.equal(5);
   });
-  it('should be maxProfit when the min price is towards the end ot the arr', () => {
-    maxProfit([1, 7, 2, 2, 1, 1]).should.be.equal(6);
+  it('should be maxProfit when the min price wasnt avalible', () => {
+    maxProfit([2, 4, 1, 1]).should.be.equal(2);
   });
 });
