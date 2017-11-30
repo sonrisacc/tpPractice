@@ -1,19 +1,3 @@
-/*
-Input:
-	Tree 1                     Tree 2
-          1                         2
-         / \                       / \
-        3   2                     1   3
-       /                           \   \
-      5                             4   7
-Output:
-Merged tree:
-	     3
-	    / \
-	   4   5
-	  / \   \
-	 5   4   7
-*/
 const BinaryTree = function(input) {
   this.value = input;
   this.left = null;
@@ -47,7 +31,7 @@ const mergeTrees = function(t1, t2) {
 
   return newTree;
 };
-
+/*
 const root1 = new BinaryTree(1);
 const branch3 = root1.addChild(3);
 const branch2 = root1.addChild(2);
@@ -75,3 +59,4 @@ console.log('root3', JSON.stringify(root3, null, 2));
 const output = mergeTrees(root1, root2);
 console.log('output', JSON.stringify(output, null, 2));
 console.log('test', JSON.stringify(root3) === JSON.stringify(output));
+*/
