@@ -31,12 +31,34 @@ const mergeTrees = function(t1, t2) {
 
   return newTree;
 };
-/*
+
+const maxDepthPath = function(tree) {
+  let leftResult = [];
+  while (tree) {
+    leftResult = leftResult.concat(tree.value);
+    tree = tree.left;
+  }
+
+  let rightResult = [];
+  while (tree) {
+    rightResult = rightResult.concat(tree.value);
+    tree = tree.right;
+  }
+  return leftResult.length > rightResult.length ? leftResult : rightResult;
+};
+
+const maxDepth = function(tree) {
+  if (tree === null) {
+    return 0;
+  }
+  return 1 + Math.max(maxDepth(tree.left), maxDepth(tree.right));
+};
+
 const root1 = new BinaryTree(1);
 const branch3 = root1.addChild(3);
 const branch2 = root1.addChild(2);
 branch3.addChild(5);
-console.log(JSON.stringify(root1, null, 2));
+// console.log(JSON.stringify(root1, null, 2));
 
 const root2 = new BinaryTree(2);
 const bbranch1 = root2.addChild(1);
@@ -54,9 +76,11 @@ cranch4.addChild(5);
 cranch4.addChild(4);
 cranch5.addChild();
 cranch5.addChild(7);
-console.log('root3', JSON.stringify(root3, null, 2));
+// console.log('root3', JSON.stringify(root3, null, 2));
 
 const output = mergeTrees(root1, root2);
-console.log('output', JSON.stringify(output, null, 2));
-console.log('test', JSON.stringify(root3) === JSON.stringify(output));
-*/
+// console.log('output', JSON.stringify(output, null, 2));
+// console.log('test', JSON.stringify(root3) === JSON.stringify(output));
+console.log(JSON.stringify(root3, null, 2));
+console.log(maxDepthPath(root3));
+console.log(maxDepth(root3));
