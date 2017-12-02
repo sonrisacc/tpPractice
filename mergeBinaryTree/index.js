@@ -53,7 +53,7 @@ const maxDepth = function(tree) {
   }
   return 1 + Math.max(maxDepth(tree.left), maxDepth(tree.right));
 };
-
+/*
 const root1 = new BinaryTree(1);
 const branch3 = root1.addChild(3);
 const branch2 = root1.addChild(2);
@@ -84,3 +84,4 @@ const output = mergeTrees(root1, root2);
 console.log(JSON.stringify(root3, null, 2));
 console.log(maxDepthPath(root3));
 console.log(maxDepth(root3));
+*/

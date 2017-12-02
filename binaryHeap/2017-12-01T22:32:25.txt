@@ -1,0 +1,12 @@
+0:00
+11:19 - warm bar start 
+12:52 - complete 
+14:49 - compare arr start 
+16:27 - clarify question 
+19:32 - corrected length syntax A- 
+21:24 - when explaining thoughts, often use broke sentences, hard to engage with A- 
+22:16 - check arr length inside of for loop H-
+31:59 - create inner function areEqualValue but forgot to ivoke it J- A-
+40:55 - give hint that he need to check if the function was ivoked in the outside scope, he didnt understood scope J-
+57:05 - done H-
+
