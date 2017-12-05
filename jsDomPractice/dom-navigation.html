@@ -1,0 +1,28 @@
+<html>
+<html>
+<body>
+  <div>Users:</div>
+  <ul>
+    <li>John</li>
+    <li>Pete</li>
+  </ul>
+  <script>
+  // select all tags within body
+var body = document.body.children;
+// select<ul>
+var div = document.body.children[0];
+// solution:
+// document.body.firstElementChild
+// or
+// document.body.children[0]
+// or (the first node is space, so we take 2nd)
+// document.body.childNodes[1]
+
+// select <ul>
+var li = document.body.lastElementChild;
+// or
+// document.body.children[1]
+</script>
+
+</body>
+</html>
