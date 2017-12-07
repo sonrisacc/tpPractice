@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>create a tree</title>
+  </head>
+  <body>
+    <ul id='container'>
+    </ul>
+
+    <script>
+    let data = {
+  Fish: {
+    trout: {},
+    salmon: {}
+  },
+
+  Tree: {
+    Huge: {
+      sequoia: {},
+      oak: {}
+    },
+    Flowering: {
+      redbud: {},
+      magnolia: {}
+    }
+  }
+};
+
+let container = document.getElementById('container');
+const genertor = input => {
+  let li = document.createElement('li');
+  li.textContent = input;
+  return li;
+};
+
+const createTree = (parent, data) => {
+  let ul = document.createElement('ul');
+  for (key in data) {
+    let child = genertor(key);
+    if (!data[key]) {
+      parent.append(child);
+    } else {
+      parent.append(ul);
+      ul.append(child);
+      createTree(child, data[key]);
+    }
+  }
+};
+createTree(container, data); // creates the tree in the container
+
+/* OFFICIAL ANSWER
+function createTree(container, obj) {
+  container.append(createTreeDom(obj));
+}
+
+function createTreeDom(obj) {
+  // if there's no children, then the call returns undefined
+  // and the <ul> won't be created
+  if (!Object.keys(obj).length) return;
+
+  let ul = document.createElement('ul');
+
+  for (let key in obj) {
+    let li = document.createElement('li');
+    li.innerHTML = key;
+
+    let childrenUl = createTreeDom(obj[key]);
+    if (childrenUl) {
+      li.append(childrenUl);
+    }
+
+    ul.append(li);
+  }
+
+  return ul;
+}
+
+let container = document.getElementById('container');
+createTree(container, data);
+*/
+</script>
+  </body>
+</html>
