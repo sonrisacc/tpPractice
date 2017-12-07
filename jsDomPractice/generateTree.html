@@ -26,7 +26,8 @@
     }
   }
 };
-
+// solution with DOM
+/*
 let container = document.getElementById('container');
 const genertor = input => {
   let li = document.createElement('li');
@@ -48,6 +49,26 @@ const createTree = (parent, data) => {
   }
 };
 createTree(container, data); // creates the tree in the container
+*/
+
+// solution with innerHTML
+function createTree(container, obj) {
+  container.innerHTML = createTreeText(obj);
+}
+
+function createTreeText(obj) {
+  // standalone recursive function
+  let li = '';
+  for (let key in obj) {
+    li += '<li>' + key + createTreeText(obj[key]) + '</li>';
+  }
+  if (li) {
+    let ul = '<ul>' + li + '</ul>';
+  }
+  return ul || '';
+}
+
+createTree(container, data);
 
 /* OFFICIAL ANSWER
 function createTree(container, obj) {
