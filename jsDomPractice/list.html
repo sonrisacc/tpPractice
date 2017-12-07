@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>a list</title>
+  </head>
+  <body>
+    <script>
+    let ul = document.createElement('ul');
+document.body.append(ul);
+while (true) {
+  var data = prompt('enter item');
+  if (!data) break;
+  let li = document.createElement('li');
+  li.textContent = data;
+  ul.append(li);
+}
+</script>
+  </body>
+</html>
