@@ -59,11 +59,12 @@ function createTree(container, obj) {
 function createTreeText(obj) {
   // standalone recursive function
   let li = '';
+  let ul = '';
   for (let key in obj) {
     li += '<li>' + key + createTreeText(obj[key]) + '</li>';
   }
   if (li) {
-    let ul = '<ul>' + li + '</ul>';
+    ul = '<ul>' + li + '</ul>';
   }
   return ul || '';
 }

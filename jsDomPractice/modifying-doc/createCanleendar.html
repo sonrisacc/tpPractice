@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>calendar</title>
+  </head>
+  <body>
+    <div id=myTable>
+    </div>
+    <script>
+//<tr > week;
+// <th> monday
+// <td> day
+let ele = document.getElementById('myTable');
+const createCalendar = (targetEle, year, month) => {
+  let table = document.createElement('table');
+  // table.innerHTML= xx;
+  let date = new Date(year, month - 1);
+  let startingDay = date.getDay();
+  let arr = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
+  let monthObj = { 12: 31, 11: 30, 10: 31 };
+
+  let trOne = document.createElement('tr');
+  for (let i = 0; i < arr.length; i++) {
+    let head = document.createElement('th');
+    head.textContent = arr[i];
+    trOne.append(head);
+    table.append(trOne);
+  }
+  ele.append(table);
+
+  let weekNum = 1;
+  let dayNum = 1;
+  while (weekNum < Math.ceil(monthObj[month] / 7) + 1 + 1) {
+    let tr = document.createElement('tr');
+    for (let i = 0; i < arr.length; i++) {
+      let td = document.createElement('td');
+      if (weekNum !== 1 || i > startingDay - 1) {
+        if (dayNum <= monthObj[month]) {
+          td.textContent = dayNum;
+          dayNum++;
+        }
+      }
+      tr.append(td);
+      table.append(tr);
+    }
+    weekNum++;
+  }
+};
+createCalendar(ele, 2017, 11);
+</script>
+  </body>
+</html>
