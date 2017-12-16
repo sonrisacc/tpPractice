@@ -39,6 +39,17 @@ Tree.prototype.countLeaves = function() {
   return counter;
 };
 
+Tree.prototype.dFselect = function(callback, depth, result) {
+  result = result || [];
+  if (callback(this.value)) {
+    result.push(this.value);
+  }
+  for (let i = 0; i < this.children.length; i++) {
+    this.children[i].dFselect(callback, result);
+  }
+  return result;
+};
+
 module.exports = Tree;
 /*
 const root1 = new Tree(1);
