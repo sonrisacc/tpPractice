@@ -8,7 +8,7 @@ pTags.forEach(cur => {
   cur.innerHTML = '';
   curParagrah.forEach(word => {
     let span = document.createElement('span');
-    span.textContent = word;
+    span.innerHTML = ` ${word}`;
     cur.append(span);
   });
 });
@@ -23,5 +23,5 @@ const changeColor = input => {
 
 let spanTags = document.querySelectorAll('span');
 spanTags.forEach(cur => {
-  setInterval(changeColor(cur), 1000);
+  setInterval(() => changeColor(cur), 1000);
 });
