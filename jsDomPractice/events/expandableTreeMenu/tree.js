@@ -1,4 +1,4 @@
-let data = {
+const data = {
   Animals: {
     Mammals: { Cows: {}, Donkeys: {}, Cats: {} },
     other: { Snakes: {}, Birds: {}, Lizards: {} }
@@ -16,9 +16,7 @@ let data = {
   }
 };
 
-// create the tree from data set
-// add show/hide node ability
-
+// create the tree from menueData set
 let body = document.body;
 let parentDiv = document.createElement('div');
 parentDiv.className = 'tree';
@@ -33,7 +31,9 @@ const menuGenerator = (input, parent) => {
   }
   for (key of keysArr) {
     let li = document.createElement('li');
-    li.textContent = key;
+    let span = document.createElement('span');
+    span.innerHTML = key;
+    li.append(span);
     parent.append(li);
     if (input[key]) {
       menuGenerator(input[key], li);
@@ -41,3 +41,17 @@ const menuGenerator = (input, parent) => {
   }
 };
 menuGenerator(data, parentDiv);
+// add show/hide node ability
+
+const clickHandler = event => {
+  // console.log('line47', event.target.tagName);
+  if (event.target.tagName != 'SPAN') {
+    return;
+  }
+  let childrenContainer = event.target.parentNode.querySelector('ul');
+  if (!childrenContainer) return; // no children
+
+  childrenContainer.hidden = !childrenContainer.hidden;
+};
+let tree = document.querySelector('div');
+tree.addEventListener('click', clickHandler);
