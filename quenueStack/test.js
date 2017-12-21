@@ -1,7 +1,7 @@
 const should = require('chai').should();
 const Queue = require('./index.js');
 
-describe('Check Queue', () => {
+xdescribe('Check Queue', () => {
   it('should be a function', () => {
     Queue.should.be.a('function');
   });
@@ -13,7 +13,7 @@ describe('Check Queue', () => {
   });
 });
 
-describe('Check queueMethod', function() {
+xdescribe('Check queueMethod', function() {
   it('should add an item to the queue', function() {
     let queue = new Queue();
     queue.enqueue('a');

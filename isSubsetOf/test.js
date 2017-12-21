@@ -2,7 +2,7 @@
 const should = require('chai').should();
 const isSubsetOf = require('./index');
 
-describe('Check isSubsetOf', () => {
+xdescribe('Check isSubsetOf', () => {
   it('should be a function', () => {
     isSubsetOf.should.be.a('function');
   });

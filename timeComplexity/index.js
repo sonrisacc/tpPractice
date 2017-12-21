@@ -8,7 +8,7 @@ const TimeComplexity = {
   EXPONENTIAL: 'exponential'
 };
 
-const innerForLoop = TimeComplexity.FIX_ME; // TODO: Update this constant
+const innerForLoopTime = TimeComplexity.FIX_ME; // TODO: Update this
 const innerForLoop = array => {
   let sum = 0;
   for (let i = 0; i < array.length; i++) {

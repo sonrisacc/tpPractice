@@ -2,7 +2,7 @@
 const should = require('chai').should();
 const LinkedList = require('./index');
 
-describe('Check LinkedList', () => {
+xdescribe('Check LinkedList', () => {
   it('should be a function', () => {
     LinkedList.should.be.a('function');
   });

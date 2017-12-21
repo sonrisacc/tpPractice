@@ -2,7 +2,7 @@
 const should = require('chai').should();
 const maxProfit = require('./index');
 
-describe('Check maxProfit', () => {
+xdescribe('Check maxProfit', () => {
   it('should be a function', () => {
     maxProfit.should.be.a('function');
   });
