@@ -1,20 +1,22 @@
-// const powerSet = function(str) {
-//   let strArr = str.split('');
-//   let result = new Set();
-//   function generator(remained, hadSoFar) {
-//     hadSoFar = hadSoFar || '';
-//     if (reamined.length === 0) return;
-//
-//     for (let i = 0; i < strArr.length - 1; i++) {
-//       hadSoFar = strArr[i];
-//       remained = strArr.splice(i);
-//     }
-//   }
-//   generator(strArr);
-//   return strArr;
-// };
-//
-// module.exports = powerSet;
-let arr = [1, 2, 3];
-console.log(arr.splice(0));
-console.log(arr);
+const powerSet = function(str) {
+  // drop duplicates
+
+  let strArr = str.split('').sort();
+  let strObj = {};
+  strArr.reduce((acc, cur) => (strObj[cur] ? strObj : (strObj[cur] = true)), 0);
+  str = Object.keys(strObj).join('');
+
+  // find subset
+  function subsetGenerator(index, curSubSet) {
+    if (index >= str.length) {
+      return [curSubSet];
+    } else {
+      let dropCurrent = subsetGenerator(index + 1, curSubSet);
+      let addCurrent = subsetGenerator(index + 1, curSubSet + str[index]);
+      return dropCurrent.concat(addCurrent);
+    }
+  }
+  return subsetGenerator(0, '').sort();
+};
+
+module.exports = powerSet;
