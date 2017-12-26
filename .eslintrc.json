@@ -3,5 +3,8 @@
   "env": {
     "es6": true
   },
-  "rules": { "require-jsdoc": "off" }
+  "rules": {
+    "require-jsdoc": "off",
+    "newline-per-chained-call": "off"
+  }
 }
