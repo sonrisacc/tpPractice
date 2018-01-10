@@ -1,4 +1,4 @@
-var waterBlocks = function(blocks) {
+const waterBlocks = function(blocks) {
   // TODO: Implement
   // find the first large number
   let result = 0;
