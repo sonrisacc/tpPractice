@@ -1,35 +1,26 @@
-/**
- * Implement a function that finds the longest palindrome in a given string.
- * For example, in the string "My dad is a racecar athlete", the longest
- * palindrome is "a racecar a". Count whitespaces as valid characters. Other
- * palindromes in the above string include "dad", "ete", " dad " (including
- * whitespace on each side of dad).
- */
-
 const longestPalindrome = function(string) {
-  // iterate through string
+  // find palindrome with given index [start,end]
+  // itertate the string, for each cur letter pair,
+  // find palindrome for odd
+  // find for even
+  // compare the two
+  // find max, compare to resultMax
+  // update resultMax
   let result = '';
-  function findPalindrome(left, right) {
-    while (left > 0 && right < string.length && left === right) {
-      left--;
-      right++;
+  let temp = '';
+  function findPalindrome(start, end) {
+    while (start >= 0 && end < string.length && string[start] === string[end]) {
+      start--;
+      end++;
     }
-    return string.slice(left + 1, right);
+    return string.slice(start + 1, end);
   }
+
   for (let i = 0; i < string.length; i++) {
     let oddPal = findPalindrome(i - 1, i + 1);
     let evenPal = findPalindrome(i, i + 1);
-    if (oddPal.length > result.length) result = oddPal;
-    if (evenPal.length > result.length) result = evenPal;
-    // even : deed
-    // check if pre = cur/ cur = after
-    // odd : dad
-    // check if pre,  after are the same
-    // check pre -1, after +1 are the same
-    // save ^ in to a var : tempMax
-    // until its not
-    // compare if tempMax > resultMAX
-    // yes: update result
+    oddPal.length > evenPal.length ? (temp = oddPal) : (temp = evenPal);
+    result.length > temp.length ? result : (result = temp);
   }
   return result;
 };
@@ -50,7 +41,12 @@ const longestPalindrome = function(string) {
 //   if input is empty/none palindrome return null
 //   if two same length, out put the first one
 
-const expectedOutput = 'a racecar a';
-const input = 'My dad is a racecar athlete';
+const expectedOutput = 'ddccbbaabbccdd';
+const input = 'ddccbbaabbccdd';
 const output = longestPalindrome(input);
-console.log(output);
+console.log(output === expectedOutput);
+
+const expectedOutput2 = ' redivider ';
+const input2 = 'aaaa level eye redivider hannah';
+const output2 = longestPalindrome(input2);
+console.log(output2 === expectedOutput2);
