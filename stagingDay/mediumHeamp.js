@@ -6,7 +6,6 @@ const MedianStream = function() {
 };
 
 const swap = function(targetIndex, curIndex, inputArr) {
-  console.log(inputArr);
   let temp = inputArr[curIndex];
   inputArr[curIndex] = inputArr[targetIndex];
   inputArr[targetIndex] = temp;
@@ -14,21 +13,14 @@ const swap = function(targetIndex, curIndex, inputArr) {
 
 MedianStream.prototype = {
   insert: function(value) {
+    // no matter what, push the value into resultArr.
     this.heapStorage.push(value);
-
+    // find curInput index
     let childIndex = this.size() - 1;
     if (childIndex === 0) return;
-
-    // if (childIndex % 2 === 0) {
-    //   let siblingIndex = childIndex - 1;
-    //   let siblingValue = this.heapStorage[childIndex - 1];
-    //   // console.log('compare', this.compare(parentValue, childValue));
-    //   if (this.compare(childValue, siblingValue)) {
-    //     swap(siblingIndex, childIndex, this.heapStorage);
-    //   }
-    // }
+    // find parentIndex
     let parentIndex = Math.floor((childIndex - 1) / 2);
-
+    // do a binaryHeap sort, every time insert compare with its parent, and swap if necessary
     while (
       childIndex > 0 &&
       this.compare(this.heapStorage[childIndex], this.heapStorage[parentIndex])
@@ -36,17 +28,20 @@ MedianStream.prototype = {
       swap(parentIndex, childIndex, this.heapStorage);
       childIndex = parentIndex;
       parentIndex = Math.floor(childIndex / 2);
+      // by now, both right and left side are sorted
 
+      // currently childIndex is actually the original parent
+      // so we will have to compare with the right side sibling of this parent
       let shouldSwap = this.compare(
         this.heapStorage[childIndex + 1],
         this.heapStorage[childIndex]
       );
-
       if (shouldSwap) {
         swap(childIndex + 1, childIndex, this.heapStorage);
       }
     }
 
+    // now everthing beside the last two node has already been sorted,
     childIndex = this.size() - 1;
     parentIndex = Math.floor((childIndex - 1) / 2);
     while (
@@ -110,3 +105,9 @@ console.log(mStream.peekMedian());
 
 // if childIndex is j
 // parentIndex Math.floor(j /2)
+
+//    1
+//
+//  4   2
+//
+// 8 5
