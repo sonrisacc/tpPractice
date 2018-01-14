@@ -19,6 +19,6 @@ const allAnagrams = function(string) {
   return Object.keys(anagrams);
 };
 
-module.exports = allAnagrams;
-// const anagrams = allAnagrams('abc');
-// console.log(anagrams); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
+// module.exports = allAnagrams;
+const anagrams = allAnagrams('abc');
+console.log(anagrams); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
