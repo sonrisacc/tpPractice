@@ -29,10 +29,8 @@ function checkEdits(str) {
   for (let i = 0; i < str.length / 2; i++) {
     let newStr =
       str.slice(0, i) + str.charAt(str.length - 1 - i) + str.slice(i + 1);
-
     if (isPalindrome(newStr)) return true;
   }
-
   return false;
 }
 
@@ -50,6 +48,7 @@ const output1 = isNearPalindrome('BANBAH') === false;
 const output2 = isNearPalindrome('BANAH') === true;
 const output3 = isNearPalindrome('HAKNNAH') === true;
 const output4 = isNearPalindrome('') === true;
+
 console.log(outputa);
 console.log(output);
 console.log(output1);
