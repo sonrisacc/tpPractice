@@ -1,7 +1,6 @@
 function root(x, n) {
   // your code goes here
   if (x <= 1) return x;
-
   let min = 0;
   let max = x;
   let temp = (min + max) / 2;
@@ -9,7 +8,6 @@ function root(x, n) {
   let tempResult = toNthPower(temp, n) - x;
 
   if (tempResult == 0) return temp;
-
   while (Math.abs(tempResult) >= 0.001) {
     if (tempResult > 0) max = temp;
     if (tempResult < 0) min = temp;
