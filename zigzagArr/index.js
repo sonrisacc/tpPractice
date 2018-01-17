@@ -1,14 +1,3 @@
-/**
- * @param {string} s
- * @param {number} numRows
- * @return {string}
- */
-/**
- * @param {string} s
- * @param {number} numRows
- * @return {string}
- */
-
 const convert1 = function(s, numRows) {
   s = s.toUpperCase();
 
@@ -71,8 +60,8 @@ const convert2 = function(s, numRows) {
   return result.join('');
 };
 
-let input = 'AB';
-let input1 = 'abc';
 convert1('ABCDEF', 2);
 convert1('ABCDEF', 3);
 convert1('ABCDEF', 4);
+
+console.log(convert1('PAYPALISHIRING', 3) === 'PAHNAPLSIIGYIR');
