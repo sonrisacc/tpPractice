@@ -1,4 +1,4 @@
-const mergeInterval = function(arr) {
+function mergeInterval(arr) {
   if (arr.length <= 1) return arr;
 
   let newArr = Array.from(arr).sort((a, b) => (a.start > b.start ? 1 : -1));
@@ -15,7 +15,7 @@ const mergeInterval = function(arr) {
     }
   }
   return result;
-};
+}
 
 //
 // const input = [
