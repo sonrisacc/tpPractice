@@ -14,6 +14,8 @@ const findPeakElement = function(nums, left, right) {
 };
 
 const input = [0, 1, 5, 2];
+// const input2 = [0, 1];
+// const input3= [1, 0];
 const output = findPeakElement(input);
 console.log(output);
 

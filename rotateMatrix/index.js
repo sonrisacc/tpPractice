@@ -16,13 +16,6 @@
 // iterate through it and fill each spot according to the realtionship we found
 
 // big 0 will be i*j, have to visit every singel spot in the matrix
-// function generateRotatedMatrix(row) {
-//   let arr = [];
-//   for (let i = 0; i < row.length; i++) {
-//     arr.push([]);
-//   }
-//   return arr;
-// }
 
 const rotateMatrix = function(matrix, direction) {
   // Your code here.
