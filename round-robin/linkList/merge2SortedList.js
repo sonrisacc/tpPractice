@@ -34,6 +34,7 @@ const mergeTwoLists = function(l1, l2) {
 
   return dumbHead.next;
 };
+
 /*
 l1: 2 -> 5
 l2: 3  -> 9
