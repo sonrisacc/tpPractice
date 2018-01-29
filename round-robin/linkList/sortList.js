@@ -1,29 +1,19 @@
 const sortList = function(head) {
   if (head == null || head.next == null) return head;
-  let pre = head;
-  let cur = head;
-  let next = head.next;
-  let temp;
+  let cur = head; // {3, 1, 2, 7}
   console.log(cur === head);
-  while (cur !== null && next !== null) {
-    if (cur.val > next.val) {
-      temp = next.next;
-      pre = next;
-      cur.next = temp;
-      next.next = cur;
-      console.log('14', cur === head);
-      cur = pre;
+  while (cur !== null && cur.next !== null) {
+    console.log('head', head);
+    if (cur.val > cur.next.val) {
+      let tempCur = cur.next; // {1-> 2 -> 7}
+      cur.next = tempCur.next; // {2->7}    cur: {3, 2, 7}
+      tempCur.next = cur; // {3,2,7}   tempCur: {1,3,2,7}
+      cur = tempCur; // {1,3,2,7}
       console.log('cur', cur);
-      console.log('pre', pre);
-      console.log('15', cur === head);
-      cur = cur.next;
-      next = cur.next;
-    } else {
-      cur = cur.next;
-      next = next.next;
     }
+    cur = cur.next;
   }
-  return next;
+  return head;
 };
 
 let input = { val: 3, next: { val: 1, next: { val: 2, next: null } } };
