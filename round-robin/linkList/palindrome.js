@@ -28,8 +28,8 @@ const isPalindrome = function(head) {
   return result;
 };
 
-// let ourput = isPalindrome({ val: 1, next: { val: 2, next: null } });
-// console.log(ourput);
+let ourput = isPalindrome({ val: 1, next: { val: 2, next: null } });
+console.log(ourput);
 /*
 // second method:
 // turn the whole list into a doubly linked list
