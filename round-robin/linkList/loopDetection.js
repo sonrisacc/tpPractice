@@ -25,8 +25,9 @@ const hasCycle = function(head) {
 };
 
 /*
-// slow
-// quick pointer
+// slow and quick pointer, where if there is loop, quick pointer will over lay with the slow pointer
+// big-O: linear, since the slow pointer is almost going through the whole list
+
 // {3 -> 5 -> 6 -> 9 -> 10}
 //                |     |
                  4  <-  7
