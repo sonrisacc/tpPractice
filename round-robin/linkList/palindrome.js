@@ -1,45 +1,74 @@
-// const isPalindrome = function(head) {
-var mid = head;
-var end = head;
-var isEven = true;
-var firstHalf = null;
-var frontNode = null;
+const transDoublyLinkedList = function(input) {
+  let list = { head: null, tail: null, length: 0 };
 
-while (end.next !== null) {
-  isEven = true;
-  if (firstHalf === null) {
-    firstHalf = new LinkedList(mid.val);
-  } else {
-    frontNode = firstHalf;
-    firstHalf = new LinkedList(mid.val);
-    firstHalf.next = frontNode;
+  let pre = null;
+  list.head = input;
+  let cur = input;
+
+  while (!!cur) {
+    cur.pre = pre;
+    pre = cur;
+    if (!cur.next) list.tail = cur;
+    cur = cur.next;
+    list.length++;
   }
-  mid = mid.next;
-  end = end.next;
-  if (end.next !== null) {
-    end = end.next;
-    isEven = false;
+  return list;
+};
+
+const isPalindrome = function(head) {
+  let list = transDoublyLinkedList(head);
+  let result = true;
+  for (let i = 0; i < Math.ceil(list.length / 2); i++) {
+    if (list.head.val !== list.tail.val) {
+      result = false;
+    }
+    list.head = list.head.next;
+    list.tail = list.tail.pre;
   }
-}
+  return result;
+};
 
-if (!isEven) {
-  mid = mid.next;
-}
+// let ourput = isPalindrome({ val: 1, next: { val: 2, next: null } });
+// console.log(ourput);
+/*
+// second method:
+// turn the whole list into a doubly linked list
+// and then find the middle of the list
+// and expand from the middle
 
-while (mid !== null) {
-  // console.log(mid.val, firstHalf.val);
-  if (mid.val !== firstHalf.val) {
-    return false;
-  }
-  mid = mid.next;
-  if (firstHalf !== null) {
-    firstHalf = firstHalf.next;
-  }
-}
-return true;
 
-// };
+head  {a -> b -> c -> d }
+pre = null
+cur.next exists?
 
+cur = head
+cur.pre = pre
+pre = cur
+cur = cur.next
+
+@ a
+cur --> {pre: null, cur:a, next:{b -> c -> d}}
+pre --> {pre: null, cur:a, next:{b -> c -> d}}
+cur = cur. next   {b -> c -> d}
+
+...
+
+@d
+cur= cru. next --> null
+
+
+
+{val:1, pre:null, next:{val:b, pre:{} }}
+
+
+
+
+
+
+
+
+// dont think the down below will work   (inital thoguhts)
+----------------------------------------------------
 // make two pointer slow, and fast, where fast's speed is slow X 2
 // slow will be at mid when fast reachs the end
 // while slow & fast proceed, reverse the first half of the list
@@ -51,3 +80,50 @@ return true;
 // O(n) time, O(1) space
 // goint through every node, so O(n)
 // O(1)  will need to mutate the original linked list
+
+/*
+{a -> b }
+ ^    ^
+     fast
+
+> {a -> b ->  b -> a }
+        ^         ^
+       slow      fast
+
+
+{a -> b ->  c  --> d -> e}
+            ^          ^
+           slow       fast
+
+
+{a -> b ->  c  --> d -> e ->f }
+                   ^          ^
+                 slow       fast
+
+pre
+cur = node
+
+@ fast c
+@ slow a
+temp =cur.next  {b ->b -> c}
+cur.next = pre
+pre = cur  {a, null}
+cur = temp  {b, b, c}
+
+@ fast d
+@ slow b
+temp =cur.next  {b -> c}
+cur.next = pre  {a, null}
+pre = cur  {b, a, null}
+cur = temp  {b, c}
+
+@ fast null
+@ slow b
+pre {b, a}
+cur b
+b vs b ?   same  continue
+
+@ fast null
+@ slow c
+a vs c?  false
+*/
