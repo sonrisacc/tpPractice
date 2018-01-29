@@ -14,6 +14,7 @@ const mergeTwoLists = function(l1, l2) {
   return dumbHead.next;
 };
 
+// these passed Leetcode test, the abve one doesnt...
 const mergeTwoLists = function(l1, l2) {
   let dumbHead = new ListNode(0);
   let cur = dumbHead;
