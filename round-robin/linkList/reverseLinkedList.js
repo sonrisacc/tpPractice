@@ -6,9 +6,14 @@ const reverseList = function(head) {
     cur.next = pre;
     pre = cur;
     cur = temp;
+    console.log('head', head);
   }
   return pre;
 };
+
+let input = { val: 3, next: { val: 1, next: { val: 2, next: null } } };
+let output = reverseList(input);
+console.log(output);
 
 /*
 

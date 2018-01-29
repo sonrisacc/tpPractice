@@ -1,22 +1,25 @@
+// this will not work, because  cur will eventually point to tempCur, where it's cur.next, so furthur edition will be done at head.next instead of the head itself
 const sortList = function(head) {
   if (head == null || head.next == null) return head;
   let cur = head; // {3, 1, 2, 7}
-  console.log(cur === head);
+  let tempCur;
   while (cur !== null && cur.next !== null) {
-    console.log('head', head);
     if (cur.val > cur.next.val) {
-      let tempCur = cur.next; // {1-> 2 -> 7}
+      tempCur = cur.next; // {1-> 2 -> 7}
       cur.next = tempCur.next; // {2->7}    cur: {3, 2, 7}
       tempCur.next = cur; // {3,2,7}   tempCur: {1,3,2,7}
+      console.log(tempCur);
       cur = tempCur; // {1,3,2,7}
-      console.log('cur', cur);
     }
-    cur = cur.next;
+    cur = cur.next; // {3,2,7}
   }
-  return head;
+  return tempCur;
 };
 
-let input = { val: 3, next: { val: 1, next: { val: 2, next: null } } };
+let input = {
+  val: 3,
+  next: { val: 1, next: { val: 2, next: { val: 7, next: null } } }
+};
 let output = sortList(input);
 console.log(output);
 // const space complexity, so sort in place
