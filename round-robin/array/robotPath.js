@@ -36,6 +36,7 @@ const robotPaths = function(n, board, i, j, result) {
   board.togglePiece(i, j);
   return result;
 };
+
 console.log(robotPaths(5));
 
 /*

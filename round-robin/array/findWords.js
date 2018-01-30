@@ -36,3 +36,12 @@ const findString = function(target, board) {
 };
 
 console.log(findString('ADGC'));
+
+/*
+make another board that save the isVisited info for the words board,
+starting from top left, move to four direction at a time,
+at each step, check if off board, if charaters is not correct, and if here has been visited 
+
+
+
+*/
