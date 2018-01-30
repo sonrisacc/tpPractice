@@ -32,7 +32,7 @@ const longestIncreasingPath = function(matrix, visited, i, j, result) {
   for (let d of direction) {
     let x = i + d[0];
     let y = j + d[1];
-    longestIncreasingPath(matrix, visited, x, y);
+    longestIncreasingPath(matrix, visited, x, y, result);
   }
   visited[i][j] = false;
   return result;

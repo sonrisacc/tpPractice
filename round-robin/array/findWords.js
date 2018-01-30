@@ -26,22 +26,50 @@ const findString = function(target, board) {
   if (!board) {
     board = [['A', 'D', 'A', 'A'], ['E', 'G', 'M', 'V'], ['A', 'C', 'T', 'A']];
   }
-
+  let result;
   let visited = [
     [false, false, false, false],
     [false, false, false, false],
     [false, false, false, false]
   ];
-  return dfs(board, visited, target, 0, 0, 0);
+
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board.length; j++) {
+      result = dfs(board, visited, target, 0, i, j);
+    }
+  }
+  return result;
 };
 
-console.log(findString('ADGC'));
+console.log(findString('AVAAMT')); // not passing yet
+console.log(findString('TMAAVA'));
+console.log(findString('CGMT')); // not passing yet
 
 /*
 make another board that save the isVisited info for the words board,
-starting from top left, move to four direction at a time,
-at each step, check if off board, if charaters is not correct, and if here has been visited 
+// iterate through every cell in the board as starting point,
+  // move to four direction at a time,
+  // at each step, check if off board, if charaters is not correct, and if here has been visited
+
+//input : [a,b,c]
+@ 0,0
+[ a b ]
+[ c d ]
+
+ a  -> c          c !== b return false
+ a  -> b  -> d    d !== c, return false
+
+ b,c,d   return false
 
 
+ [ a b c]
+ [ d e f]
+ [ a b c]
+
+
+@ 0, 0
+  a  -> d
+  a  -> b  -> e
+  a  -> b  -> c  found
 
 */
