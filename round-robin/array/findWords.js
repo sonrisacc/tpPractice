@@ -51,6 +51,10 @@ make another board that save the isVisited info for the words board,
   // move to four direction at a time,
   // at each step, check if off board, if charaters is not correct, and if here has been visited
 
+// big O...  n * m for iterate through the whole matrix
+            at each cur index, recursively  find input
+             n * m * k ?  (k stands for length of the input target)  
+
 //input : [a,b,c]
 @ 0,0
 [ a b ]
