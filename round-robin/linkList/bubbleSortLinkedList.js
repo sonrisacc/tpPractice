@@ -1,17 +1,27 @@
 // this will not work, because  cur will eventually point to tempCur, where it's cur.next, so furthur edition will be done at head.next instead of the head itself
+
+function ListNode(val) {
+  this.val = val;
+  this.next = null;
+}
+
 const sortList = function(head) {
   if (head == null || head.next == null) return head;
+
+  let helper = new ListNode(0);
   let cur = head; // {3, 1, 2, 7}
-  let tempCur;
+  let pre = helper;
+  let next = null;
+
   while (cur !== null && cur.next !== null) {
     if (cur.val > cur.next.val) {
-      tempCur = cur.next; // {1-> 2 -> 7}
-      cur.next = tempCur.next; // {2->7}    cur: {3, 2, 7}
-      tempCur.next = cur; // {3,2,7}   tempCur: {1,3,2,7}
-      console.log(tempCur);
-      cur = tempCur; // {1,3,2,7}
+      pre = cur.next; // {1-> 2 -> 7}
+      next = pre.next; // {2 -> 7}
+      cur.next = next; // {2->7}    cur: {3, 2, 7}
+      pre.next = cur; // {3,2,7}   pre: {1,3,2,7}
+      pre = helper; // {1,3,2,7}
     }
-    cur = cur.next; // {3,2,7}
+    cur = next; // {2,7}
   }
   return tempCur;
 };
