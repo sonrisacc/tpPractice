@@ -1,12 +1,13 @@
-const majorityElement = function(nums) {
+const majorityElement = function(nums, k) {
+  k = k || 2; // in this question, k=3 specifically
   let n = nums.length;
-  let k = 3; // in this question, k=3 specifically
   let result = [];
   if (n == 0 || k < 2) return result;
   let candidates = [];
   let counts = [];
   for (let num of nums) {
     let settled = false;
+    // find if the candidate exists , update its counts
     for (let i = 0; i < k - 1; i++) {
       if (candidates[i] == num) {
         counts[i]++;
@@ -14,6 +15,7 @@ const majorityElement = function(nums) {
         break;
       }
     }
+
     if (settled) continue;
     for (let i = 0; i < k - 1; i++) {
       if (counts[i] == 0) {
@@ -41,7 +43,7 @@ const majorityElement = function(nums) {
   return result;
 };
 
-let output = majorityElement([1, 1, 1, 1, 2, 3, 3, 3, 3]);
+let output = majorityElement([1, 1, 1, 1, 1, 1, 3, 3, 3]);
 console.log(output);
 // 4:19
 
@@ -58,6 +60,6 @@ console.log(output);
     ^ this will take extra space
 
   chosen stratergies:
-    set a counter
+   set an array of counter
 
 */
