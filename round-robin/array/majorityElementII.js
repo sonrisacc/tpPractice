@@ -6,6 +6,7 @@ const majorityElement = function(nums) {
   let count1 = 0;
   let count2 = 0;
   let n = nums.length;
+
   for (let i = 0; i < n; i++) {
     if (nums[i] == number1) count1++;
     else if (nums[i] == number2) count2++;
@@ -20,8 +21,10 @@ const majorityElement = function(nums) {
       count2--;
     }
   }
+
   count1 = 0;
   count2 = 0;
+  // check if majority exists, if not return []
   for (let i = 0; i < n; i++) {
     if (nums[i] == number1) count1++;
     else if (nums[i] == number2) count2++;
@@ -31,7 +34,7 @@ const majorityElement = function(nums) {
   return result;
 };
 
-let output = majorityElement([1, 1, 1, 1, 2, 3, 3, 3, 3]);
+let output = majorityElement([3, 3, 3, 3, 1, 2, 2, 2, 2]);
 console.log(output);
 // 4:19
 
@@ -48,6 +51,49 @@ console.log(output);
     ^ this will take extra space
 
   chosen stratergies:
-    set a counter
+    set two counters
+    [3, 3, 3, 3, 1, 2, 2, 2, 2]
+     ^
+    num1 = 3, counter = 1
+    num2 = 3, count2 = 0
 
+    [3, 3, 3, 3, 1, 2, 2, 2, 2]
+        ^
+    num1 = 3, counter = 2
+    num2 = 3, count2 = 0
+
+    [3, 3, 3, 3, 1, 2, 2, 2, 2]
+           ^
+    num1 = 3, counter = 3
+    num2 = 3, count2 = 0
+
+    [3, 3, 3, 3, 1, 2, 2, 2, 2]
+              ^
+    num1 = 3, counter = 4
+    num2 = 3, count2 = 0
+
+    [3, 3, 3, 3, 1, 2, 2, 2, 2]
+                 ^
+    num1 = 3, counter = 4
+    num2 = 1, count2 = 1
+
+    [3, 3, 3, 3, 1, 2, 2, 2, 2]
+                    ^
+    num1 = 3, counter = 3
+    num2 = 1, count2 = 0
+
+    [3, 3, 3, 3, 1, 2, 2, 2, 2]
+                      ^
+    num1 = 3, counter = 3
+    num2 = 2, count2 = 1
+
+    [3, 3, 3, 3, 1, 2, 2, 2, 2]
+                          ^
+    num1 = 3, counter = 3
+    num2 = 2, count2 = 2
+
+    [3, 3, 3, 3, 1, 2, 2, 2, 2]
+                             ^
+    num1 = 3, counter = 3
+    num2 = 2, count2 = 3
 */
