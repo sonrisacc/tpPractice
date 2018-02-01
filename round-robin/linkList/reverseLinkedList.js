@@ -1,3 +1,8 @@
+function ListNode(x) {
+  this.value = x;
+  this.next = null;
+}
+
 const reverseList = function(head) {
   let pre = null;
   let cur = head;

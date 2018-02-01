@@ -97,5 +97,5 @@ console.log(output);
     num1 = 3, counter = 3
     num2 = 2, count2 = 3
 
-    incase num1 || num2 
+    incase num1 || num2
 */
