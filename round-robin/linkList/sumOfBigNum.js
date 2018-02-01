@@ -20,8 +20,8 @@ function addTwoHugeNumbers(a, b) {
     carriedOver = sum > 9999 ? true : false;
     cur.next = new ListNode(sum % 10000);
     cur = cur.next;
-    a = a != null ? a.next : a;
-    b = b != null ? b.next : b;
+    if (a) a = a.next;
+    if (b) b = b.next;
   }
   if (carriedOver) cur.next = new ListNode(1);
   console.log(dummy);
