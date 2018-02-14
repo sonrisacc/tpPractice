@@ -1,0 +1,26 @@
+body {
+  padding: 1em;
+  background: #2b3134;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 20 px;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  margin: 0 0 2em;
+  height: 100px;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto 1em;
+}
+
+/*
+  Set the color of the icon
+*/
+svg path,
+svg rect {
+  fill: lightblue;
+}
