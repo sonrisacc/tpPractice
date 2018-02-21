@@ -147,15 +147,11 @@ function allianceHelp12(t, allianceSize) {
 
 function allianceHelp4(sum, steps) {
   steps = steps > 10 ? 10 : steps;
-  console.log(steps);
   const potentiallyEachStep = Math.floor(sum * 0.1);
   const eachStep = potentiallyEachStep < 60 ? 60 : potentiallyEachStep;
-  console.log(eachStep);
   const totalSteps = steps * eachStep;
-  console.log(totalSteps);
   const difference = sum - totalSteps;
   let result = difference < 0 ? 0 : difference;
-  console.log('aa', result);
 }
 // allianceHelp(1000, 1000);
 // allianceHelp4(100, 1); // 40
