@@ -7,14 +7,13 @@ function allianceHelp(t, allianceSize) {
 
   let aSum = a * allianceSize;
   let bSum = b * allianceSize;
-  console.log(t, bSum);
 
   let remainedTime = 0;
   if (t === 0) return remainedTime;
   if (t > aSum && t < bSum) {
     let aMaxSteps = Math.floor(t / a);
     let bMaxSteps = Math.floor(t / b);
-    console.log('bMaxSteps', bMaxSteps);
+
     let chunkTime =
       t - a * aMaxSteps > t - b * bMaxSteps ? b * bMaxSteps : a * aMaxSteps;
     let chunkSteps =
@@ -29,11 +28,10 @@ function allianceHelp(t, allianceSize) {
       remainedTime = t - chunkTime - actualNeededSteps * a;
   }
   if (t >= bSum) {
-    console.log('t, bSum', t, bSum);
     remainedTime = t - bSum;
   }
   if (t <= aSum) remainedTime = t - Math.floor(t / a) * a;
-  console.log('1', remainedTime);
+
   return remainedTime;
 }
 
@@ -70,6 +68,7 @@ function oneBoost(t, actualMaxSteps, init) {
 
   if (chunkSteps <= actualMaxSteps) {
     savedTime = chunkTime;
+    actualMaxSteps -= chunkSteps;
   } else {
     let aTime = t - a * actualMaxSteps;
     let bTime = t - b * actualMaxSteps;
@@ -84,20 +83,90 @@ function oneBoost(t, actualMaxSteps, init) {
       }
     }
   }
-  oneBoost(t - savedTime, actualMaxSteps, t);
+  return savedTime;
 }
 
 function allianceHelp2(t, allianceSize) {
   let remainedTime = t;
-  let actualMaxSteps = allianceSize;
-
+  let actualMaxSteps = allianceSize > 10 ? 10 : allianceSize;
+  let boostCounter = 0;
+  while (boostCounter < actualMaxSteps && remainedTime > 0) {
+    let savedTime = oneBoost(remainedTime, actualMaxSteps, t);
+    remainedTime -= savedTime;
+    boostCounter++;
+  }
+  console.log(remainedTime);
   return remainedTime;
 }
-allianceHelp(1000, 1000);
-allianceHelp2(1000, 1000);
 
-allianceHelp(121, 2);
-allianceHelp2(121, 2);
+function allianceHelp12(t, allianceSize) {
+  let remainedTime = t;
+  let actualMaxSteps = allianceSize > 10 ? 10 : allianceSize;
+  let a = 60;
+  let b = Math.floor(t * 0.1);
 
-allianceHelp(909, 500);
-allianceHelp2(909, 1500);
+  let max = Math.max(a, b);
+  let min = Math.min(a, b);
+
+  let aMaxSteps = Math.floor(t / a);
+  let bMaxSteps = Math.floor(t / b);
+
+  let chunkTime =
+    t - a * aMaxSteps > t - b * bMaxSteps ? b * bMaxSteps : a * aMaxSteps;
+  let chunkSteps =
+    t - a * aMaxSteps > t - b * bMaxSteps ? bMaxSteps : aMaxSteps;
+
+  if (chunkSteps <= actualMaxSteps) {
+    remainedTime -= chunkTime;
+    let actualMaxBoost = actualMaxSteps - chunkSteps;
+    while (actualMaxBoost > 0) {
+      if (remainedTime - max > 0) {
+        remainedTime -= max;
+      } else if (remainedTime - min > 0) {
+        remainedTime -= min;
+      }
+      actualMaxBoost--;
+    }
+  } else {
+    let aTime = t - a * actualMaxSteps;
+    let bTime = t - b * actualMaxSteps;
+
+    if (Math.min(aTime, bTime) >= 0) {
+      remainedTime = Math.min(aTime, bTime);
+    } else {
+      if (Math.max(aTime, bTime) >= 0) {
+        remainedTime = Math.max(aTime, bTime);
+      } else {
+        remainedTime = remainedTime;
+      }
+    }
+  }
+  console.log(remainedTime);
+  return remainedTime;
+}
+
+function allianceHelp4(sum, steps) {
+  steps = steps > 10 ? 10 : steps;
+  console.log(steps);
+  const potentiallyEachStep = Math.floor(sum * 0.1);
+  const eachStep = potentiallyEachStep < 60 ? 60 : potentiallyEachStep;
+  console.log(eachStep);
+  const totalSteps = steps * eachStep;
+  console.log(totalSteps);
+  const difference = sum - totalSteps;
+  let result = difference < 0 ? 0 : difference;
+  console.log('aa', result);
+}
+// allianceHelp(1000, 1000);
+// allianceHelp4(100, 1); // 40
+// allianceHelp4(90, 1); // => 30
+// allianceHelp4(90, 10); // => 0
+// //
+// allianceHelp4(78, 2); // 0
+// allianceHelp4(78, 1); // 18
+// //
+// // // allianceHelp(121, 2);
+// allianceHelp4(121, 2); // 1
+
+allianceHelp4(999, 11); // 9
+// allianceHelp4(909, 1500);
