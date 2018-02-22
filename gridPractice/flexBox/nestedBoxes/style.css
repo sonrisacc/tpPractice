@@ -1,0 +1,32 @@
+body {
+  background: #2b3134;
+  font-family: 'Gill sans', sans-serif;
+  margin: 0 auto;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  display: flex;
+  color: black;
+  padding: 20px;
+  justify-content: space-around;
+  align-content: flex-start;
+}
+
+.a {
+  background: lightblue;
+}
+
+.b {
+  background: lightpink;
+}
+
+.c {
+  background: lightgrey;
+}
