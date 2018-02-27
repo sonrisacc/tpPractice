@@ -1,8 +1,8 @@
 const combinationSum = function(candidates, target) {
-  let res = [];
+  let res = 0;
   let partial = [];
   if (candidates == null || candidates.length == 0) return res;
-  candidates.sort((a, b) => a - b);
+  // candidates.sort((a, b) => a - b);
   helper(candidates, res, partial, target, 0);
   console.log(res);
   return res;
@@ -11,7 +11,8 @@ const combinationSum = function(candidates, target) {
 function helper(candidates, result, partial, sum, index) {
   if (sum < 0) return;
   if (sum == 0) {
-    result.push(partial.slice());
+    result++;
+    // result.push(partial.slice());
     return;
   }
   for (let i = index; i < candidates.length; i++) {
@@ -24,4 +25,4 @@ function helper(candidates, result, partial, sum, index) {
   }
 }
 
-combinationSum([2, 3, 6, 7], 7);
+combinationSum([2, 7, 6, 3], 7);
